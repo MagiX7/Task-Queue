@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\App.cpp" />
+    <ClCompile Include="Source\Log.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\External\PugiXml\src\pugixml.cpp">
+      <Filter>External\PugiXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Window.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Textures.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Render.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Audio.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Map.cpp">
+      <Filter>Entites</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneGameplay.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Player.cpp">
+      <Filter>Entites</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TaskManager.cpp">
+      <Filter>Tasks</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\App.h" />
+    <ClInclude Include="Source\Defs.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DynArray.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\List.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Log.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Point.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SString.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\External\PugiXml\src\pugiconfig.hpp">
+      <Filter>External\PugiXml</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\External\PugiXml\src\pugixml.hpp">
+      <Filter>External\PugiXml</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Queue.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Window.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Textures.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Render.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Module.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Audio.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneGameplay.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entity.h">
+      <Filter>Entites</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Map.h">
+      <Filter>Entites</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PQueue.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Player.h">
+      <Filter>Entites</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Animation.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PerfTimer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Timer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Task.h">
+      <Filter>Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TaskManager.h">
+      <Filter>Tasks</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="External">
+      <UniqueIdentifier>{83a966c7-b4bb-4eff-9c2c-3ff3c7b55a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{2cad778a-d356-48b0-9fee-587f1bbb187e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\PugiXml">
+      <UniqueIdentifier>{2855ff7f-53a1-413d-a75b-18b4ade921dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{8f25e06e-b365-4336-aaee-1c3fcdde8ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{457a1f5e-2637-4658-8317-5337191ffc41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entites">
+      <UniqueIdentifier>{49da0d86-4218-407e-bb0f-30e859ba0a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tasks">
+      <UniqueIdentifier>{fee808bf-fce1-44f5-b901-9c26236539b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
