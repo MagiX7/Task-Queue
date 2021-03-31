@@ -19,7 +19,7 @@ public:
 	void Draw() override;
 	bool UnLoad() override;
 
-	bool HandleInput(float dt);
+	Task* HandleInput(float dt);
 
 private:
 
@@ -36,10 +36,8 @@ private:
 
 	int direction; // 0 right 1 left
 
-	// TODO : Create the tasks
-	MoveLeft* moveLeft;
-	MoveRight* moveRight;
-	MoveUp* moveUp;
-	MoveDown* moveDown;
-
+	Task* keyW;
+	Task* keyA;
+	Task* keyS;
+	Task* keyD;
 };

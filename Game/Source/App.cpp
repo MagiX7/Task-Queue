@@ -24,7 +24,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new Textures();
 	audio = new Audio();
 	sceneGameplay = new SceneGameplay();
-	taskManager = new TaskManager();
+	//taskManager = new TaskManager();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -33,7 +33,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(sceneGameplay);
-	AddModule(taskManager);
+	//AddModule(taskManager);
 
 	// Render last to swap buffer
 	AddModule(render);
@@ -105,7 +105,7 @@ bool App::Update()
 	bool ret = true;
 	PrepareUpdate();
 
-	if(input->GetWindowEvent(WE_QUIT) == true)
+	if(app->input->GetWindowEvent(WE_QUIT) == true)
 		ret = false;
 
 	if(ret == true)

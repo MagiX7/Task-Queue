@@ -19,13 +19,13 @@ bool TaskManager::Start()
 	return true;
 }
 
-bool TaskManager::Update(float dt)
+bool TaskManager::Update(float dt, Entity* actor)
 {
 	// TODO 2: Check if the list is empty and pop a task
 	if (tasks.start != nullptr)
 	{
 		currentTask = tasks.start->data;
-		currentTask->Execute(dt);
+		currentTask->Execute(dt, actor);
 		tasks.Pop(currentTask);
 		
 		// Ejecutar dos tasks en vez de una solo?

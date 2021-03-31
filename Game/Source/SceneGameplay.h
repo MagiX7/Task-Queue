@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Module.h"
+#include "Queue.h"
 
 class Map;
 class Player;
@@ -22,6 +23,7 @@ public:
 	bool CleanUp() override;
 
 private:
+	TaskManager* taskManager;
 
 	Map* map;
 	Player* player;

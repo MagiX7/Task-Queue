@@ -15,7 +15,7 @@ class Render;
 class Textures;
 class Audio;
 class SceneGameplay;
-class TaskManager;
+//class TaskManager;
 
 class App
 {
@@ -77,7 +77,7 @@ public:
 	Textures* tex;
 	Audio* audio;
 	SceneGameplay* sceneGameplay;
-	TaskManager* taskManager;
+	//TaskManager* taskManager;
 
 private:
 

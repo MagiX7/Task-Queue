@@ -1,0 +1,199 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Task Queue</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<h1>Task Queue</h1>
+						<p>My name is David González and I am a videogame developer student at CITM.<br />
+						This is a personal research for the subject Project II about task queues in videogames and how to implement one.</p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">About Task Queues</a></li>
+							<li><a href="#first">Task Queues in Videogames</a></li>
+							<li><a href="#second">Pattern</a></li>
+							<li><a href="#cta">Getting Started</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- About Task Queues -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>About Task Queues</h2>
+										</header>
+										<p>Task queue is a mechanism to distribute a sequence of tasks among parallel threads of execution.
+										The main problem is broken down into tasks and enqueued into the queue.<br />
+										We can differenciate two types of Task Queues: Pull and Push Queues.<br />
+										Push Queue automatically executes a task, and Pull Queue has a list of actions which you can execute whenever you want.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Task Queues in Videogames -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Task Queues in Videogames</h2>
+									<p>Here are some examples in different videogames to see how a task queue is actually implemented:</p>
+								</header>
+								<ul class="features">
+									<li>
+										<a href="https://youtu.be/wZBN14jdYqQ?t=328"><img src="images/pokemon_colosseum.jpg" width="350" /></a>
+										<h3>Pokémon Colosseum</h3>
+										<p>While you are in a fight, first you will need to choose the actions you want to do with each pokémon, and later each one will execute the one they were assigned.<br />
+										So the decisions are pushed into a list and later executed.
+										The example can be seen at the minute 5:28.</p>
+									</li>
+									<li>
+										<a href="https://www.youtube.com/watch?v=cX3tuFzVSCw&t=480s&ab_channel=slobulus"><img src="images/warcraft_3.jpg" width="350"/></a>
+										<h3>Warcraft 3 Reforged</h3>
+										<p>In this game, when a pawn is building a building, and you also tell him to go felling trees, he first finishes the building and later starts with the trees.<br />
+										More can be seen by clicking the image and jumping to the minute 25:50 of the video.</p>
+									</li>
+									<!--
+									<li>
+										<span class="icon major style5 fa-gem"></span>
+										<h3>Dolor nullam</h3>
+										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+									</li>
+									-->
+								</ul>
+							</section>
+
+						<!-- Pattern Used -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Pattern Used</h2>
+									<p>The most common pattern to do a task queue is the Command pattern.<br />
+									A command is a <i> reified method call.</i> <br />
+									"Reify" means "make real", or making something "first-class".<br />
+									So we are talking about taking some <i>concept</i> and turning it into a piece of <i>data</i>, therefore, an object, which you can stick in a variable, pass to a function, etc.<br />
+									In conclusion, it is a method call wrapped in an object.
+									</p>
+									<br />
+									<img src="images/command_pattern_uml.png" width="500"/>
+								</header>
+							</section>
+
+						<!-- Get Started -->
+							<section id="cta" class="main special">
+								<header class="major">
+									<h2>Getting started</h2>
+									<p>Here we will start to implement a Task Queue and a Task Manager</p>
+								</header>
+
+								<h3>
+									First, we will create a base class Task, from which all tasks will inherit.
+								</h3>
+								<img src="images/task_base_class.png" />
+								<p><br /></p>
+
+								<h3>
+									When we are done with the base class, we can start doing the "child" classes for each task we want to add.
+									<br />
+									We will need the constructor where we need an actor, the destructor, and a function<code>Execute()</code>.
+									The parameters it receives might vary depending on what they do.
+									This would be an example:
+								</h3>
+								<img src="images/inheritance_task_class.png" />
+								<p><br /></p>
+
+								<h3>After this, in our player, we create as many Task pointers as we need.
+								In this case, we are going to need four, for the buttons W, A, S and D.
+								</h3>
+								<img src="images/tasks_pointers.png"/>
+								<img src="images/tasks_instantation.png"/>
+								<p><br /></p>
+
+								<h3>Once this is ready, in the function <code>HandleInput()</code> we will need to return the task just like this.
+								</h3>
+								<img src="images/return_task.png" width="450"/>
+								<p><br /></p>
+
+								<h3>
+									Afterwards, in the gameplay scene, we will need to create a <code>TaskManager* taskManager</code>.<br />
+									In each method, like <code>Start()</code> or <code>Update(dt)</code> we will need to call the task manager <code>Start()</code> or <code>Update(dt, actor)</code> methods.<br />
+								</h3>
+								<img src="images/task_manager_instantiation.png"/> <br />
+								<img src="images/task_manager_update.png"/>
+								<p><br /></p>
+
+								<h3>When we are done with that, in the Update method from the gameplay scene, we will need to create a temporal task to store the last task requested and add it to a queue.<br /> 
+								Before, we told the function <code>HandleInput()</code> from the player to return a task when a key is pressed, so we need to add that task into the task manager.
+								</h3>
+								<img src="images/tmp_task.png"/>
+								<p><br /></p>
+
+								<h3>Continuing, we will need to actually execute the tasks.<br />
+								So, in the update method of the task manager, we are going to check if the list is not empty, and then assign the first task to a current task variable, call the execute method of that task, and finally we need to pop it from the list.<br />
+								</h3>
+								<img src="images/task_manager_execute_tasks.png"/>
+								<p><br /></p>
+
+								<footer class="major">
+									<ul class="actions special">
+										<li><a download href="https://github.com/MagiX7/Task-Queue" class="button primary">Download the Handout</a></li>
+									</ul>
+								</footer>
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Aliquam sed mauris</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="generic.html" class="button">Learn More</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Contact</h2>
+							<dl class="alt">
+								<dt>Email</dt>
+								<dd><a>DavidGonzalez2001-9@hotmail.com</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="https://github.com/MagiX7" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/david-jes%C3%BAs-gonz%C3%A1lez-l%C3%B3pez-03a2041b1/" class="icon brands fa-linkedin alt"><span class="label">linkedin</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

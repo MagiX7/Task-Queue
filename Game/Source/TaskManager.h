@@ -12,7 +12,7 @@ public:
 	virtual ~TaskManager();
 
 	bool Start();
-	bool Update(float dt);
+	bool Update(float dt, Entity* actor);
 	bool CleanUp();
 
 	bool EnqueueTask(Task* task);

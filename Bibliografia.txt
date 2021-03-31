@@ -1,0 +1,2 @@
+https://medium.com/@fosterbrereton/starfighter-in-c-the-task-queue-a074d132e78
+https://gameprogrammingpatterns.com/command.html

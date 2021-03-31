@@ -5,25 +5,21 @@
 class Task
 {
 public:
-	Task(Entity* act) : actor(act) {}
+	Task() {}
 	virtual ~Task() {}
 	
-	virtual void Execute(float dt) {}
+	virtual void Execute(float dt, Entity* actor) {}
 
-	inline void SetActor(Entity* act) { actor = act; }
-
-protected:
-	Entity* actor;
+public:
 
 };
 
 class MoveLeft : public Task
 {
 public:
-	MoveLeft(Entity* act) : Task(act) {}
-	virtual ~MoveLeft() {};
-
-	void Execute(float dt) override
+	MoveLeft() {}
+	virtual ~MoveLeft() {}
+	void Execute(float dt, Entity* actor) override
 	{
 		actor->bounds.x -= 200 * dt;
 	}
@@ -32,10 +28,9 @@ public:
 class MoveRight : public Task
 {
 public:
-	MoveRight(Entity* act) : Task(act) {}
-	virtual ~MoveRight() {};
-
-	void Execute(float dt) override
+	MoveRight() {}
+	virtual ~MoveRight() {}
+	void Execute(float dt, Entity* actor) override
 	{
 		actor->bounds.x += 350 * dt;
 	}
@@ -44,10 +39,9 @@ public:
 class MoveUp : public Task
 {
 public:
-	MoveUp(Entity* act) : Task(act) {}
-	virtual ~MoveUp() {};
-
-	void Execute(float dt) override
+	MoveUp() {}
+	virtual ~MoveUp() {}
+	void Execute(float dt, Entity* actor) override
 	{
 		actor->bounds.y -= 200 * dt;
 	}
@@ -56,10 +50,9 @@ public:
 class MoveDown : public Task
 {
 public:
-	MoveDown(Entity* act) : Task(act) {}
-	virtual ~MoveDown() {};
-
-	void Execute(float dt) override
+	MoveDown() {}
+	virtual ~MoveDown() {}
+	void Execute(float dt, Entity* actor) override
 	{
 		actor->bounds.y += 350 * dt;
 	}

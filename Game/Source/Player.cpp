@@ -48,15 +48,14 @@ Player::Player(EntityType type, iPoint pos) : Entity(type)
 		}
 	}
 
+	keyW = new MoveUp();
+	keyA = new MoveLeft();
+	keyS = new MoveDown();
+	keyD = new MoveRight();
 }
 
 bool Player::Load()
 {
-	moveLeft = new MoveLeft(this);
-	moveRight = new MoveRight(this);
-	moveUp = new MoveUp(this);
-	moveDown = new MoveDown(this);
-
 	texture = app->tex->Load("Assets/Textures/Player/player.png");
 	currentAnim = &idleAnim;
 
@@ -74,9 +73,7 @@ bool Player::Update(float dt)
 	walkLeftAnim.speed = 7.0f * dt;
 	walkRightAnim.speed = 7.0f * dt;
 
-	ret = HandleInput(dt);
-
-	LOG("PLAYER POS: %i %i", bounds.x, bounds.y);
+	//ret = HandleInput(dt);
 
 	currentAnim->Update();
 
@@ -92,15 +89,10 @@ bool Player::UnLoad()
 {
 	app->tex->UnLoad(texture);
 
-	RELEASE(moveLeft);
-	RELEASE(moveRight);
-	RELEASE(moveUp);
-	RELEASE(moveDown);
-
 	return true;
 }
 
-bool Player::HandleInput(float dt)
+Task* Player::HandleInput(float dt)
 {
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
@@ -112,12 +104,10 @@ bool Player::HandleInput(float dt)
 		{
 			currentAnim = &walkLeftAnim;
 		}
-		app->taskManager->EnqueueTask(moveUp);
-		//moveUp->Execute(dt, this);
-		//bounds.y -= 50 * dt;
+		return keyW;
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+	else if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 	{
 		if (direction == 0)
 		{
@@ -127,12 +117,11 @@ bool Player::HandleInput(float dt)
 		{
 			currentAnim = &walkLeftAnim;
 		}
-		app->taskManager->EnqueueTask(moveDown);
-		//moveDown->Execute(dt, this);
-		//bounds.y += 350 * dt;
+		return keyS;
+		//app->taskManager->EnqueueTask(keyS);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	else if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
 		direction = 1;
 
@@ -141,12 +130,11 @@ bool Player::HandleInput(float dt)
 			walkLeftAnim.Reset();
 			currentAnim = &walkLeftAnim;
 		}
-		app->taskManager->EnqueueTask(moveLeft);
-		//moveLeft->Execute(dt, this);
-		//bounds.x -= 50 * dt;
+		return keyA;
+		//app->taskManager->EnqueueTask(keyA);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	else if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		direction = 0;
 
@@ -155,9 +143,8 @@ bool Player::HandleInput(float dt)
 			walkRightAnim.Reset();
 			currentAnim = &walkRightAnim;
 		}
-		app->taskManager->EnqueueTask(moveRight);
-		//moveRight->Execute(dt, this);
-		//bounds.x += 350 * dt;
+		return keyD;
+		//app->taskManager->EnqueueTask(keyD);
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE &&
@@ -169,5 +156,5 @@ bool Player::HandleInput(float dt)
 	}
 
 
-	return true;
+	return nullptr;
 }

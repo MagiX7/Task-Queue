@@ -78,7 +78,9 @@ public:
 		{
 			QueueItem<tdata>* newStart = start->next;
 			item = start->data;
-			RELEASE(start);
+			//RELEASE(start);
+			delete start;
+			start = nullptr;
 			start = newStart;
 			result = true;
 		}
