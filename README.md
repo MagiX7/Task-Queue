@@ -19,4 +19,4 @@ In Warcraft 3 Reforged, when a pawn is doing a task and you assign another task 
 ## Pattern
 The most common pattern to do a task list is the Command pattern, which consists in a method call wrapped in an object.
 
-If you want to see more and implement one, go and check the webpage [HERE](https://magix7.github.io/Task-Queue/).
+If you want to see more details and implement a task queue, go and check my webpage about it [HERE](https://magix7.github.io/Task-Queue/).
