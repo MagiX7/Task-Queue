@@ -13,24 +13,25 @@ SceneGameplay::SceneGameplay()
 	map = new Map();
 	player = new Player(EntityType::PLAYER, iPoint(64, 70));
 
-	taskManager = new TaskManager();
+	// TODO 3: Instantiate the Task Manager
+
 }
 
 bool SceneGameplay::Start()
 {
 	map->Load("Assets/Map/gameplay.tmx");
 	player->Load();
-	taskManager->Start();
+
+	// TODO 3: Start it
 
 	return true;
 }
 
 bool SceneGameplay::Update(float dt)
 {
-	Task* tmp = taskManager->HandleInput(player);
-	if (tmp) taskManager->EnqueueTask(tmp);
+	// TODO 4: Check if there is a task coming from an input and enqueue it
+	//		   Also call the update method of the task manager
 
-	taskManager->Update(dt, player);
 
 	map->Update(dt);
 	player->Update(dt);
@@ -50,7 +51,8 @@ bool SceneGameplay::CleanUp()
 {
 	map->CleanUp();
 	player->UnLoad();
-	taskManager->CleanUp();
+
+	// TODO 3: And call the clean up
 
 	return true;
 }

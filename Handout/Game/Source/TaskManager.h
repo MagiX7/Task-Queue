@@ -21,12 +21,7 @@ public:
 	Task* HandleInput(Entity* actor);
 
 public:
-	// TODO 1: Create a task queue
-	Queue<Task*> tasks;
 
-	// TODO 2: Create the tasks
-	Task* keyW;
-	Task* keyA;
-	Task* keyS;
-	Task* keyD;
+	// TODO 1: Create the tasks and the queue
+
 };

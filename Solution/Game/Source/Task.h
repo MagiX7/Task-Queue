@@ -9,9 +9,6 @@ public:
 	virtual ~Task() {}
 	
 	virtual void Execute(float dt, Entity* actor) {}
-
-public:
-
 };
 
 class MoveLeft : public Task
