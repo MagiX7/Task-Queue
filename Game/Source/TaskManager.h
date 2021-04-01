@@ -18,9 +18,15 @@ public:
 	bool EnqueueTask(Task* task);
 	bool DequeueTask();
 
+	Task* HandleInput(Entity* actor);
+
 public:
 	// TODO 1: Create a task queue
 	Queue<Task*> tasks;
-	Task* currentTask;
 
+	// TODO 2: Create the tasks
+	Task* keyW;
+	Task* keyA;
+	Task* keyS;
+	Task* keyD;
 };

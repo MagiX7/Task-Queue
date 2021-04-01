@@ -8,6 +8,10 @@
 
 TaskManager::TaskManager()
 {
+	keyW = new MoveUp();
+	keyA = new MoveLeft();
+	keyS = new MoveDown();
+	keyD = new MoveRight();
 }
 
 TaskManager::~TaskManager()
@@ -24,14 +28,14 @@ bool TaskManager::Update(float dt, Entity* actor)
 	// TODO 2: Check if the list is empty and pop a task
 	if (tasks.start != nullptr)
 	{
-		currentTask = tasks.start->data;
-		currentTask->Execute(dt, actor);
-		tasks.Pop(currentTask);
+		Task* tmp;
+		tmp = tasks.start->data;
+		tmp->Execute(dt, actor);
+		tasks.Pop(tmp);
 		
 		// Ejecutar dos tasks en vez de una solo?
 	}
 	
-
 	return true;
 }
 
@@ -53,4 +57,14 @@ bool TaskManager::EnqueueTask(Task* task)
 bool TaskManager::DequeueTask()
 {
 	return tasks.Pop(tasks.start->data);
+}
+
+Task* TaskManager::HandleInput(Entity* actor)
+{
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) return keyW;
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) return keyA;
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) return keyS;
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) return keyD;
+
+	return nullptr;
 }

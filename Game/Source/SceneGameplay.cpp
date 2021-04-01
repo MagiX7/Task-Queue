@@ -27,7 +27,7 @@ bool SceneGameplay::Start()
 
 bool SceneGameplay::Update(float dt)
 {
-	Task* tmp = player->HandleInput(dt);
+	Task* tmp = taskManager->HandleInput(player);
 	if (tmp) taskManager->EnqueueTask(tmp);
 
 	taskManager->Update(dt, player);

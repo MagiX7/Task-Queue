@@ -19,7 +19,7 @@ public:
 	void Draw() override;
 	bool UnLoad() override;
 
-	Task* HandleInput(float dt);
+	void HandleInput(float dt);
 
 private:
 
@@ -36,8 +36,4 @@ private:
 
 	int direction; // 0 right 1 left
 
-	Task* keyW;
-	Task* keyA;
-	Task* keyS;
-	Task* keyD;
 };

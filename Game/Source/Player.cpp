@@ -48,10 +48,6 @@ Player::Player(EntityType type, iPoint pos) : Entity(type)
 		}
 	}
 
-	keyW = new MoveUp();
-	keyA = new MoveLeft();
-	keyS = new MoveDown();
-	keyD = new MoveRight();
 }
 
 bool Player::Load()
@@ -73,7 +69,7 @@ bool Player::Update(float dt)
 	walkLeftAnim.speed = 7.0f * dt;
 	walkRightAnim.speed = 7.0f * dt;
 
-	//ret = HandleInput(dt);
+	HandleInput(dt);
 
 	currentAnim->Update();
 
@@ -92,7 +88,7 @@ bool Player::UnLoad()
 	return true;
 }
 
-Task* Player::HandleInput(float dt)
+void Player::HandleInput(float dt)
 {
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
@@ -104,7 +100,7 @@ Task* Player::HandleInput(float dt)
 		{
 			currentAnim = &walkLeftAnim;
 		}
-		return keyW;
+		//return keyW;
 	}
 
 	else if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
@@ -117,7 +113,7 @@ Task* Player::HandleInput(float dt)
 		{
 			currentAnim = &walkLeftAnim;
 		}
-		return keyS;
+		//return keyS;
 		//app->taskManager->EnqueueTask(keyS);
 	}
 
@@ -130,7 +126,7 @@ Task* Player::HandleInput(float dt)
 			walkLeftAnim.Reset();
 			currentAnim = &walkLeftAnim;
 		}
-		return keyA;
+		//return keyA;
 		//app->taskManager->EnqueueTask(keyA);
 	}
 
@@ -143,7 +139,7 @@ Task* Player::HandleInput(float dt)
 			walkRightAnim.Reset();
 			currentAnim = &walkRightAnim;
 		}
-		return keyD;
+		//return keyD;
 		//app->taskManager->EnqueueTask(keyD);
 	}
 
@@ -155,6 +151,4 @@ Task* Player::HandleInput(float dt)
 		currentAnim = &idleAnim;
 	}
 
-
-	return nullptr;
 }
