@@ -1,0 +1,33 @@
+<!--File to load all the pushbacks for animations-->
+<pushbacks>
+	<player>
+		<idle_animation>
+			<pushback x="14" y ="7" w="19" h="29"/>
+			<pushback x="66" y ="6" w="17" h="30"/>
+			<pushback x="115" y ="6" w="19" h="30"/>
+			<pushback x="163" y ="7" w="20" h="29"/>			
+		</idle_animation>
+	
+		<walk_right_animation>
+			<pushback x ="67" y="45" w="20" h ="28"/>
+			<pushback x ="116" y="46" w="20" h ="27"/>
+			<pushback x ="166" y="48" w="20" h ="25"/>
+			<pushback x ="217" y="45" w="23" h ="28"/>
+			<pushback x ="266" y="46" w="20" h ="27"/>
+		</walk_right_animation>
+
+		<walk_left_animation>
+			<pushback x ="618" y="46" w="20" h ="28"/>
+			<pushback x ="569" y="47" w="20" h ="27"/>
+			<pushback x ="519" y="49" w="20" h ="25"/>
+			<pushback x ="465" y="46" w="23" h ="28"/>
+			<pushback x ="419" y="47" w="20" h ="27"/>
+		</walk_left_animation>
+		
+		<jump_animation>
+			
+		</jump_animation>
+	
+	</player>
+		
+</pushbacks>

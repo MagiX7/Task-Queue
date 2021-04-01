@@ -1,2 +1,0 @@
-TODO 1: Crear una lista de tasks
-TODO 2: Rellenar el if de la scene manager para cuando se haga una task

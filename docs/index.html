@@ -57,7 +57,7 @@
 							<section id="first" class="main special">
 								<header class="major">
 									<h2>Task Queues in Videogames</h2>
-									<p>Here are some examples in different videogames to see how a task queue is actually implemented:</p>
+									<p>Here are some examples in different RPG videogames to see in which cases a task queue can be implemented:</p>
 								</header>
 								<ul class="features">
 									<li>
@@ -105,14 +105,12 @@
 									<p>Here we will start to implement a Task Queue and a Task Manager</p>
 								</header>
 
-								<h3>
-									First, we will create a base class Task, from which all tasks will inherit.
+								<h3>First, we will create a base class Task, from which all tasks will inherit.
 								</h3>
 								<img src="images/task_base_class.png" />
 								<p><br /></p>
 
-								<h3>
-									When we are done with the base class, we can start doing the "child" classes for each task we want to add.
+								<h3>When we are done with the base class, we can start doing the "child" classes for each task we want to add.
 									<br />
 									We will need the constructor where we need an actor, the destructor, and a function<code>Execute()</code>.
 									The parameters it receives might vary depending on what they do.
@@ -124,7 +122,7 @@
 								<h3>After this, in the task manager, we create as many Task pointers as we need.
 								In this case, we are going to need four, for the buttons W, A, S and D.
 								</h3>
-								<img src="images/tasks_pointers.png"/>
+								<img src="images/tasks_pointers.png" height="111"/>
 								<img src="images/tasks_instantation.png"/>
 								<p><br /></p>
 
@@ -133,8 +131,7 @@
 								<img src="images/return_task.png"/>
 								<p><br /></p>
 
-								<h3>
-									Afterwards, in the gameplay scene, we will need to create a <code>TaskManager* taskManager</code>.<br />
+								<h3>Afterwards, in the gameplay scene, we will need to create a <code>TaskManager* taskManager</code>.<br />
 									In each method, like <code>Start()</code> or <code>Update(dt)</code> we will need to call the task manager <code>Start()</code> or <code>Update(dt, actor)</code> methods.<br />
 								</h3>
 								<img src="images/task_manager_instantiation.png"/> <br />
@@ -163,13 +160,6 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<section>
-							<h2>Aliquam sed mauris</h2>
-							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn More</a></li>
-							</ul>
-						</section>
-						<section>
 							<h2>Contact</h2>
 							<dl class="alt">
 								<dt>Email</dt>
@@ -180,9 +170,8 @@
 								<li><a href="https://www.linkedin.com/in/david-jes%C3%BAs-gonz%C3%A1lez-l%C3%B3pez-03a2041b1/" class="icon brands fa-linkedin alt"><span class="label">linkedin</span></a></li>
 							</ul>
 						</section>
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<p class="copyright">&copy; MIT License. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
-
 			</div>
 
 		<!-- Scripts -->
