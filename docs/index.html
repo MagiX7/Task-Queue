@@ -88,13 +88,50 @@
 								<header class="major">
 									<h2>Pattern Used</h2>
 									<p>The most common pattern to do a task queue is the Command pattern.<br />
-									A command is a <i> reified method call.</i> <br />
-									"Reify" means "make real", or making something "first-class".<br />
-									So we are talking about taking some <i>concept</i> and turning it into a piece of <i>data</i>, therefore, an object, which you can stick in a variable, pass to a function, etc.<br />
-									In conclusion, it is a method call wrapped in an object.
+										A command is a <i> reified method call.</i> <br />
+										"Reify" means "make real", or making something "first-class".<br />
+										So we are talking about taking some <i>concept</i> and turning it into a piece of <i>data</i>, therefore, an object, which you can stick in a variable, pass to a function, etc.<br />
+										In conclusion, it is a method call wrapped in an object.
 									</p>
-									<br />
+									
+									<p>Imagine we configure the inputs from our game like this:
+									</p>
+									<img src="images/basic_input.png" /><br />
+
+									<p>This chunck of code works if we want to "hardcode" the user inputs, but nowadays, many games let the user change the buttons mapping.<br />
+									if we want to do that, we need to wrap those function calls into something we can swap out.
+									So let's create an object that does or represent the action.<br />
+									This is where the Command party joins us.<br /><br />
+									First of all, we need a base class:
+									</p>
+									<img src="images/command_base_class.png"/><br />
+
+									<p>Then, we create the subclasses for the different game actions:
+									</p>
+									<img src="images/command_subclasses.png"/>
+
+									<p>So, in the input handler -or where is better to you- we store a pointer to a command for each button and we call it when the user presses a button.
+									</p>
+									<img src="images/command_execute_call.png"/>
+
+									<p>We can also change the actor of the actions, by passing an entity as a parameter.
+									</p>
+									<img src="images/command_execute_actor.png"/>
+									
+									<p>Then, we change the <code>HandleInput()</code> function so it returns a Command
+									</p>
+									<img src="images/command_handleinput_return.png"/>
+
+									<p>As you could see, it can not execute the command immediately since it does not know what actor is going to do it.
+									We can see that as an advantage, and delay the execution call.<br />
+									Then, we need some code to take that command and runs it on the actor.
+									</p>
+									<img src="images/command_take_command.png"/>
+
+									<p><br />Finally, here is a UML to see how the Command pattern works:
+									</p>
 									<img src="images/command_pattern_uml.png" width="500"/>
+
 								</header>
 							</section>
 
@@ -148,6 +185,10 @@
 								</h3>
 								<img src="images/task_manager_execute_tasks.png"/>
 								<p><br /></p>
+
+								<h3>You can also take profit of the Command pattern and redefine the keys. You, for example, can swap the directions in the axis
+								</h3>
+								<img src="images/redefine_keys.png"/>
 
 								<footer class="major">
 									<ul class="actions special">

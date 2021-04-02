@@ -61,7 +61,6 @@ bool TaskManager::EnqueueTask(Task* task)
 Task* TaskManager::HandleInput()
 {
 	// TODO 2: Check if W,A,S or D is pressed to move the player, and return the corresponding task
-
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) return keyW;
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) return keyA;
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) return keyS;
@@ -69,9 +68,6 @@ Task* TaskManager::HandleInput()
 
 	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 	{
-		// TODO 6: Redefine the keys so the horizontal axis is swapped.
-		//		   Do the same with the vertical axis.
-
 		// Horizontal axis
 		Task* aux = keyA;
 		keyA = keyD;
