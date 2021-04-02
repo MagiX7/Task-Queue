@@ -16,9 +16,8 @@ public:
 	bool CleanUp();
 
 	bool EnqueueTask(Task* task);
-	bool DequeueTask();
 
-	Task* HandleInput(Entity* actor);
+	Task* HandleInput();
 
 public:
 

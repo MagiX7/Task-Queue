@@ -39,20 +39,13 @@ bool TaskManager::CleanUp()
 
 bool TaskManager::EnqueueTask(Task* task)
 {
-	// Uncomment to use it
+	// TODO 1: Uncomment to use it
 	//tasks.Push(task);
 
 	return true;
 }
 
-bool TaskManager::DequeueTask()
-{
-	// Uncomment to use it
-	//return tasks.Pop(tasks.start->data);
-	return true;
-}
-
-Task* TaskManager::HandleInput(Entity* actor)
+Task* TaskManager::HandleInput()
 {
 	// TODO 2: Check if W,A,S or D is pressed to move the player, and return the corresponding task
 

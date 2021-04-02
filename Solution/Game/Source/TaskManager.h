@@ -16,15 +16,13 @@ public:
 	bool CleanUp();
 
 	bool EnqueueTask(Task* task);
-	bool DequeueTask();
 
-	Task* HandleInput(Entity* actor);
+	Task* HandleInput();
 
 public:
-	// TODO 1: Create a task queue
+	// TODO 1: Create the tasks and the queue
 	Queue<Task*> tasks;
 
-	// TODO 2: Create the tasks
 	Task* keyW;
 	Task* keyA;
 	Task* keyS;

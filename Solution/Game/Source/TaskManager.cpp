@@ -8,6 +8,7 @@
 
 TaskManager::TaskManager()
 {
+	// TODO 1: Instantiate the tasks
 	keyW = new MoveUp();
 	keyA = new MoveLeft();
 	keyS = new MoveDown();
@@ -25,10 +26,11 @@ bool TaskManager::Start()
 
 bool TaskManager::Update(float dt, Entity* actor)
 {
+	// TODO 5: Check if the queue is not empty and execute the task.
+	//		   Don't forget to pop it from the list.
 	if (tasks.start != nullptr)
 	{
-		Task* tmp;
-		tmp = tasks.start->data;
+		Task* tmp = tasks.start->data;
 		tmp->Execute(dt, actor);
 		tasks.Pop(tmp);
 	}
@@ -38,7 +40,12 @@ bool TaskManager::Update(float dt, Entity* actor)
 
 bool TaskManager::CleanUp()
 {
-	// TODO 1: Dont forget to clear the list
+	// TODO 1: Don't forget to clear the list and delete the tasks
+	RELEASE(keyW);
+	RELEASE(keyA);
+	RELEASE(keyS);
+	RELEASE(keyD);
+
 	tasks.Clear();
 
 	return true;
@@ -51,13 +58,10 @@ bool TaskManager::EnqueueTask(Task* task)
 	return true;
 }
 
-bool TaskManager::DequeueTask()
+Task* TaskManager::HandleInput()
 {
-	return tasks.Pop(tasks.start->data);
-}
+	// TODO 2: Check if W,A,S or D is pressed to move the player, and return the corresponding task
 
-Task* TaskManager::HandleInput(Entity* actor)
-{
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) return keyW;
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) return keyA;
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) return keyS;
@@ -65,7 +69,8 @@ Task* TaskManager::HandleInput(Entity* actor)
 
 	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 	{
-		// Redefine the keys
+		// TODO 6: Redefine the keys so the horizontal axis is swapped.
+		//		   Do the same with the vertical axis.
 
 		// Horizontal axis
 		Task* aux = keyA;

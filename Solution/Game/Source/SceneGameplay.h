@@ -23,6 +23,7 @@ public:
 	bool CleanUp() override;
 
 private:
+	// TODO 3: Create a Task Manager
 	TaskManager* taskManager;
 
 	Map* map;
