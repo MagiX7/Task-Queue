@@ -30,7 +30,7 @@
 						<ul>
 							<li><a href="#intro" class="active">About Task Queues</a></li>
 							<li><a href="#first">Task Queues in Videogames</a></li>
-							<li><a href="#second">Pattern</a></li>
+							<li><a href="#second">Command Pattern</a></li>
 							<li><a href="#third">Pros and cons</a></li>
 							<li><a href="#getting started">Getting Started</a></li>
 							<li><a href="#references">References</a></li>
@@ -83,7 +83,7 @@
 						<!-- Pattern Used -->
 							<section id="second" class="main special">
 								<header class="major">
-									<h2>Pattern Used</h2>
+									<h2>Command pattern</h2>
 									<p>The most common pattern to do a task queue is the Command pattern.<br />
 										A command is a <i> reified method call.</i> <br />
 										"Reify" means "make real", or making something "first-class".<br />
@@ -126,7 +126,10 @@
 									</p>
 
 									<p><br />Finally, here is a UML to see how the Command pattern works:<br />
-									<img src="images/command_pattern_uml.png" width="500"/>
+									<img src="images/command_pattern_uml.png" width="500"/><br />
+									We have a command with a function execute.<br />
+									Later we also have all the commands we need. Those commands have a reciever that will call a function in order to do the action.<br />
+									On the other side, we have a client or user, who will trigger the command.
 									</p>
 
 								</header>
