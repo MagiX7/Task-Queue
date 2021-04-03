@@ -1,1 +1,0 @@
-Al tenerlo implementado, con las tasks en la clase del player, si pulsas dos botones a la vez para que vaya en diagonal, tarda mas en parar
