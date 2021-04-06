@@ -54,7 +54,7 @@
 											- Pushs queues: Automatic execution when a task is pushed.<br />
 											Imagine an ad campaign. You can set a deliver time to send out the e-mails. When the time arrives, it starts sending the messages automatically.<br />
 											- Pull queues: They depend on other worker services to "lease" tasks from the queue on their own initiative. One solution takes advantage of the ability to attach a tag to a pull task.<br />
-											Consider an app that mantains a leaderboards for numerous different games, with many players and groups constantly in play.
+											Consider an app that mantains leaderboards for numerous different games, with many players and groups constantly in play.
 											Every time there is a new high score, the app can enqueue a pull task with the score and the player, and use the game ID as a task tag.
 											A worker periodically "wakes up", leases a group of tasks with the same game ID, and updates the leaderboard.
 										</p>
