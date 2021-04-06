@@ -47,11 +47,16 @@
 										<header class="major">
 											<h2 style="text-align:center">About Task Queues</h2>
 										</header>
-										<p style="text-align:center">
+										<p style="text-align:left">
 											Tasks are units of work that can be handled asynchronously because they need a lot of time to complete and we can’t afford it finishes to continue with the game.
-											In order to manage tasks, we use a task queue, where you add all the tasks and they get executed in the background.<br />
-											We can differenciate two types of Task Queues: Pull and Push Queues.<br />
-											Push Queue automatically executes a task, meanwhile a Pull Queue has a list of actions which you can execute whenever you want.
+											In order to manage tasks, we use a task queue, where you add all the tasks and they get executed in the background.<br /><br />
+											We can differenciate two types of Task Queues:<br />
+											- Pushs queues: Automatic execution when a task is pushed.<br />
+											Imagine an ad campaign. You can set a deliver time to send out the e-mails. When the time arrives, it starts sending the messages automatically.<br />
+											- Pull queues: They depend on other worker services to "lease" tasks from the queue on their own initiative. One solution takes advantage of the ability to attach a tag to a pull task.<br />
+											Consider an app that mantains a leaderboards for numerous different games, with many players and groups constantly in play.
+											Every time there is a new high score, the app can enqueue a pull task with the score and the player, and use the game ID as a task tag.
+											A worker periodically "wakes up", leases a group of tasks with the same game ID, and updates the leaderboard.
 										</p>
 									</div>
 								</div>
@@ -84,50 +89,49 @@
 							<section id="second" class="main special">
 								<header class="major">
 									<h2>Command pattern</h2>
-									<p>The most common pattern to do a task queue is the Command pattern.<br />
+									<p style="text-align:left">The most common pattern to do a task queue is the Command pattern.<br />
 										A command is a <i> reified method call.</i> <br />
 										"Reify" means "make real", or making something "first-class".<br />
 										So we are talking about taking some <i>concept</i> and turning it into a piece of <i>data</i>, therefore, an object, which you can stick in a variable, pass to a function, etc.<br />
 										In conclusion, it is a method call wrapped in an object.
 									</p>
 									
-									<p>Imagine we configure the inputs from our game like this:<br />
-									<img src="images/basic_input.png" /><br />
-									</p>
+									<p style="text-align:left">Imagine we configure the inputs from our game like this:</p>
+									<img src="images/basic_input.png" />
 
-									<p>This chunck of code works if we want to "hardcode" the user inputs, but nowadays, many games let the user change the buttons mapping.<br />
+									<p style="text-align:left"><br />This chunck of code works if we want to "hardcode" the user inputs, but nowadays, many games let the user change the buttons mapping.<br />
 									if we want to do that, we need to wrap those function calls into something we can swap out.
 									So let's create an object that does or represent the action.<br />
-									This is where the Command party joins us.<br /><br />
-									First of all, we need a base class:<br />
-									<img src="images/command_base_class.png"/><br />
+									This is where the Command design pattern joins us.<br /><br />
+									First of all, we need a base class:
 									</p>
+									<img src="images/command_base_class.png" width="320"/><br />
 
-									<p>Then, we create the subclasses for the different game actions:<br />
+									<p style="text-align:left"><br />Then, we create the subclasses for the different game actions:<br />
+									</p>
 									<img src="images/command_subclasses.png"/>
-									</p>
 
-									<p>So, in the input handler -or where is better to you- we store a pointer to a command for each button and we call it when the user presses a button.<br />
+									<p style="text-align:left"><br />So, in the input handler -or where is better to you- we store a pointer to a command for each button and we call it when the user presses a button.<br />
+									</p>
 									<img src="images/command_execute_call.png"/>
-									</p>
 
-									<p>We can also change the actor of the actions, by passing an entity as a parameter.<br />
+									<p style="text-align:left"><br />We can also change the actor of the actions, by passing an entity as a parameter.<br />
+									</p>
 									<img src="images/command_execute_actor.png"/>
-									</p>
 									
-									<p>Then, we change the <code>HandleInput()</code> function so it returns a Command.<br />
-									<img src="images/command_handleinput_return.png"/>
+									<p style="text-align:left"><br />Then, we change the <code>HandleInput()</code> function so it returns a Command.<br />
 									</p>
+									<img src="images/command_handleinput_return.png"/>
 
-									<p>As you could see, it can not execute the command immediately since it does not know what actor is going to do it.
+									<p style="text-align:left"><br />As you could see, it can not execute the command immediately since it does not know what actor is going to do it.
 									We can see that as an advantage, and delay the execution call.<br />
 									Then, we need some code to take that command and runs it on the actor.<br />
-									<img src="images/command_take_command.png"/>
 									</p>
+									<img src="images/command_take_command.png"/>
 
-									<p><br />Finally, here is a UML to see how the Command pattern works:<br />
-									<img src="images/command_pattern_uml.png" width="500"/><br />
-									We have a command with a function execute.<br />
+									<p style="text-align:left"><br />Finally, here is a UML to see how the Command pattern works:</p>
+									<img class="center" src="images/command_pattern_uml.png" width="500"/><br />
+									<p style="text-align:left"><br />We have a command with a function execute.<br />
 									Later we also have all the commands we need. Those commands have a reciever that will call a function in order to do the action.<br />
 									On the other side, we have a client or user, who will trigger the command.
 									</p>
@@ -140,16 +144,16 @@
 								<header class="major">
 									<h2 style="text-align:center">Pros and cons</h2>
 								</header>
-								<h2 style="text-align:center">Pros:</h2>
-								<p style="text-align:center">
+								<h2 style="text-align:left">Pros:</h2>
+								<p style="text-align:left">
 									- Layers of indirection between the user's input and the execution of the command.<br />
 									- Controls remapping.<br />
 									- Variable actor.<br />
 									- Undo and redo.<br />
 									- Multithreading.<br />
 								</p>
-								<h2 style="text-align:center">Cons:</h2>
-								<p style="text-align:center">
+								<h2 style="text-align:left">Cons:</h2>
+								<p style="text-align:left">
 									- The amount of classes increases depending on the tasks we want to add.<br />
 									- Blocking: one thread failure can cause a failure on another thread.
 								</p>
@@ -159,15 +163,15 @@
 							<section id="getting started" class="main special">
 								<header class="major">
 									<h2>Getting started</h2>
-									<p>Here we will start to implement a Task Queue and a Task Manager</p>
+									<p style="text-align:left">Here we will start to implement a Task Queue and a Task Manager</p>
 								</header>
 
-								<h3>First, we will create a base class Task, from which all tasks will inherit.
+								<h3 style="text-align:left">First, we will create a base class Task, from which all tasks will inherit.
 								</h3>
 								<img src="images/task_base_class.png" />
 								<p><br /></p>
 
-								<h3>When we are done with the base class, we can start doing the "child" classes for each task we want to add.
+								<h3 style="text-align:left">When we are done with the base class, we can start doing the "child" classes for each task we want to add.
 									<br />
 									We will need the constructor where we need an actor, the destructor, and a function<code>Execute()</code>.
 									The parameters it receives might vary depending on what they do.
@@ -176,37 +180,37 @@
 								<img src="images/inheritance_task_class.png" />
 								<p><br /></p>
 
-								<h3>After this, in the task manager, we create as many Task pointers as we need.
+								<h3 style="text-align:left">After this, in the task manager, we create as many Task pointers as we need.
 								In this case, we are going to need four, for the buttons W, A, S and D.
 								</h3>
 								<img src="images/tasks_pointers.png" height="111"/>
 								<img src="images/tasks_instantation.png"/>
 								<p><br /></p>
 
-								<h3>Once this is ready, in the function <code>HandleInput()</code> we will need to return the task just like this.
+								<h3 style="text-align:left">Once this is ready, in the function <code>HandleInput()</code> we will need to return the task just like this.
 								</h3>
 								<img src="images/return_task.png"/>
 								<p><br /></p>
 
-								<h3>Afterwards, in the gameplay scene, we will need to create a <code>TaskManager* taskManager</code>.<br />
+								<h3 style="text-align:left">Afterwards, in the gameplay scene, we will need to create a <code>TaskManager* taskManager</code>.<br />
 									In each method, like <code>Start()</code> or <code>Update(dt)</code> we will need to call the task manager <code>Start()</code> or <code>Update(dt, actor)</code> methods.<br />
 								</h3>
 								<img src="images/task_manager_instantiation.png"/> <br />
 								<img src="images/task_manager_update.png"/>
 								<p><br /></p>
 
-								<h3>When we are done with that, in the Update method from the gameplay scene, we will need to create a temporal task to store the last task requested and add it to a queue.<br /> 
+								<h3 style="text-align:left">When we are done with that, in the Update method from the gameplay scene, we will need to create a temporal task to store the last task requested and add it to a queue.<br /> 
 								</h3>
 								<img src="images/tmp_task.png"/>
 								<p><br /></p>
 
-								<h3>Continuing, we will need to actually execute the tasks.<br />
+								<h3 style="text-align:left">Continuing, we will need to actually execute the tasks.<br />
 								So, in the update method of the task manager, we are going to check if the list is not empty, and then assign the first task to a current task variable, call the execute method of that task, and finally we need to pop it from the list.<br />
 								</h3>
 								<img src="images/task_manager_execute_tasks.png"/>
 								<p><br /></p>
 
-								<h3>You can also take profit of the Command pattern and redefine the keys. You, for example, can swap the directions in the axis
+								<h3 style="text-align:left">You can also take profit of the Command pattern and redefine the keys. You, for example, can swap the directions in the axis
 								</h3>
 								<img src="images/redefine_keys.png"/>
 
